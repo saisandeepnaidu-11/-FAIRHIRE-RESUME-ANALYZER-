@@ -1,0 +1,142 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function getUserData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        (request.auth.token.email == "lakshmisurekha1751@gmail.com" && request.auth.token.email_verified == true) ||
+        (request.auth.token.email == "gandhavarapikiranmai@gmail.com" && request.auth.token.email_verified == true) ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && getUserData().role == 'admin')
+      );
+    }
+
+    function isRecruiter() {
+      return isAdmin() || (isAuthenticated() && exists(/databases/$(database)/documents/users/$(request.auth.uid)) && getUserData().role == 'recruiter');
+    }
+
+    function isRecent(ts) {
+      return ts is timestamp && 
+             ts <= request.time && 
+             ts > request.time - duration.value(5, 'm');
+    }
+
+    function isValidUser(data) {
+      return hasOnlyAllowedFields(['uid', 'name', 'email', 'role', 'photoURL']) &&
+             data.uid is string && data.uid.size() > 0 &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 100 &&
+             isValidEmail(data.email) &&
+             data.role in ['admin', 'recruiter'];
+    }
+
+    function isValidCandidate(data) {
+      return hasOnlyAllowedFields(['id', 'name', 'email', 'skills', 'experience', 'education', 'rawText', 'biasLabels', 'status', 'source', 'createdAt', 'updatedAt']) &&
+             data.id is string && data.id.size() > 0 &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 100 &&
+             data.email is string && data.email.size() > 0 &&
+             data.status in ['pending', 'reviewed', 'hired'] &&
+             data.createdAt is timestamp;
+    }
+
+    function isValidComment(data) {
+      return hasOnlyAllowedFields(['id', 'candidateId', 'authorUid', 'authorName', 'text', 'createdAt']) &&
+             data.candidateId is string && data.candidateId.size() > 0 &&
+             data.authorUid is string && data.authorUid == request.auth.uid &&
+             data.text is string && data.text.size() > 0 && data.text.size() < 2000 &&
+             data.createdAt is timestamp;
+    }
+
+    function isValidFeedback(data) {
+      return hasOnlyAllowedFields(['id', 'candidateId', 'authorUid', 'type', 'rating', 'comments', 'createdAt']) &&
+             data.candidateId is string && data.candidateId.size() > 0 &&
+             data.type in ['recruiter', 'candidate'] &&
+             data.rating is number && data.rating >= 1 && data.rating <= 5 &&
+             data.createdAt is timestamp;
+    }
+
+    function isValidAuditLog(data) {
+      return hasOnlyAllowedFields(['candidateId', 'candidateName', 'action', 'timestamp', 'metadata']) &&
+             data.action is string && data.action.size() > 0 &&
+             data.timestamp is timestamp;
+    }
+
+    function isValidEmail(email) {
+      return email is string && email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+
+    function hasOnlyAllowedFields(fields) {
+      return request.resource.data.keys().hasOnly(fields);
+    }
+
+    // Users Collection
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && isOwner(userId) && 
+                    isValidUser(request.resource.data) &&
+                    request.resource.data.role == 'recruiter' && 
+                    request.resource.data.uid == userId;
+      allow update: if isAdmin() || 
+                    (isOwner(userId) && 
+                     isValidUser(request.resource.data) &&
+                     request.resource.data.role == resource.data.role);
+    }
+
+    // Candidates Collection
+    match /candidates/{candidateId} {
+      allow read: if isRecruiter();
+      allow create: if isRecruiter() && 
+                    isValidCandidate(request.resource.data) &&
+                    request.resource.data.status == 'pending' &&
+                    isRecent(request.resource.data.createdAt);
+      allow update: if isRecruiter() && 
+                    isValidCandidate(request.resource.data) &&
+                    request.resource.data.createdAt == resource.data.createdAt;
+      allow delete: if isAdmin();
+
+      // Comments Subcollection
+      match /comments/{commentId} {
+        allow read: if isRecruiter();
+        allow create: if isRecruiter() && 
+                      isValidComment(request.resource.data) &&
+                      isRecent(request.resource.data.createdAt);
+        allow update: if isRecruiter() && 
+                      resource.data.authorUid == request.auth.uid &&
+                      isValidComment(request.resource.data) &&
+                      request.resource.data.createdAt == resource.data.createdAt;
+        allow delete: if isAdmin() || (isRecruiter() && resource.data.authorUid == request.auth.uid);
+      }
+
+      // Feedback Subcollection
+      match /feedback/{feedbackId} {
+        allow read: if isRecruiter();
+        allow create: if isAuthenticated() && 
+                      isValidFeedback(request.resource.data) &&
+                      isRecent(request.resource.data.createdAt);
+        allow update: if isRecruiter() && 
+                      resource.data.authorUid == request.auth.uid &&
+                      isValidFeedback(request.resource.data) &&
+                      request.resource.data.createdAt == resource.data.createdAt;
+        allow delete: if isAdmin();
+      }
+    }
+
+    // Audit Logs Collection
+    match /audit_logs/{logId} {
+      allow read: if isAdmin();
+      allow create: if isRecruiter() && 
+                    isValidAuditLog(request.resource.data) &&
+                    isRecent(request.resource.data.timestamp);
+      allow update, delete: if false;
+    }
+  }
+}

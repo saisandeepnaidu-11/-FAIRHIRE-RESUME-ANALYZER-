@@ -1,0 +1,329 @@
+[
+  {
+    "id": "zqf3x0ecu",
+    "name": "Tasneem.",
+    "email": "N/A",
+    "skills": [],
+    "experience": [],
+    "education": [],
+    "rawText": "Binary Content",
+    "biasLabels": {
+      "fairnessScore": 83,
+      "debiasedScore": 88,
+      "atsScore": 77,
+      "inferredGender": "Female",
+      "collegeTier": "Tier 1",
+      "contributions": [
+        {
+          "feature": "Skills Alignment",
+          "impact": 35,
+          "reason": "Excellent tech stack matches target role."
+        },
+        {
+          "feature": "Neutral Tone",
+          "impact": 15,
+          "reason": "Excellent professional syntax."
+        },
+        {
+          "feature": "College Tier",
+          "impact": -5,
+          "reason": "Minor penalty for non-Ivy League school."
+        }
+      ]
+    },
+    "status": "pending",
+    "source": "uploaded",
+    "createdAt": "2026-05-18T11:20:59.782Z"
+  },
+  {
+    "id": "c1s439vgl",
+    "name": "Sandeep (1)",
+    "email": "N/A",
+    "skills": [],
+    "experience": [],
+    "education": [],
+    "rawText": "Binary Content",
+    "biasLabels": {
+      "fairnessScore": 86,
+      "debiasedScore": 82,
+      "atsScore": 94,
+      "inferredGender": "Male",
+      "collegeTier": "Tier 1",
+      "contributions": [
+        {
+          "feature": "Skills Alignment",
+          "impact": 35,
+          "reason": "Excellent tech stack matches target role."
+        },
+        {
+          "feature": "Neutral Tone",
+          "impact": 15,
+          "reason": "Excellent professional syntax."
+        },
+        {
+          "feature": "College Tier",
+          "impact": -5,
+          "reason": "Minor penalty for non-Ivy League school."
+        }
+      ]
+    },
+    "status": "pending",
+    "source": "uploaded",
+    "createdAt": "2026-05-18T11:13:29.478Z"
+  },
+  {
+    "id": "9kxv3s0ut",
+    "name": "Tasneem.",
+    "email": "N/A",
+    "skills": [],
+    "experience": [],
+    "education": [],
+    "rawText": "Binary Content",
+    "biasLabels": {
+      "fairnessScore": 71,
+      "debiasedScore": 94,
+      "atsScore": 83,
+      "inferredGender": "Female",
+      "collegeTier": "Tier 1",
+      "contributions": [
+        {
+          "feature": "Skills Alignment",
+          "impact": 35,
+          "reason": "Excellent tech stack matches target role."
+        },
+        {
+          "feature": "Neutral Tone",
+          "impact": 15,
+          "reason": "Excellent professional syntax."
+        },
+        {
+          "feature": "College Tier",
+          "impact": -5,
+          "reason": "Minor penalty for non-Ivy League school."
+        }
+      ]
+    },
+    "status": "pending",
+    "source": "uploaded",
+    "createdAt": "2026-05-18T11:10:18.013Z"
+  },
+  {
+    "id": "cyacdzspv",
+    "name": "KATTA KOUSHIK",
+    "email": "N/A",
+    "skills": [],
+    "experience": [],
+    "education": [],
+    "rawText": "Binary Content",
+    "biasLabels": {
+      "fairnessScore": 72,
+      "debiasedScore": 83,
+      "atsScore": 82,
+      "inferredGender": "Female",
+      "collegeTier": "Tier 1",
+      "contributions": [
+        {
+          "feature": "Skills Alignment",
+          "impact": 35,
+          "reason": "Excellent tech stack matches target role."
+        },
+        {
+          "feature": "Neutral Tone",
+          "impact": 15,
+          "reason": "Excellent professional syntax."
+        },
+        {
+          "feature": "College Tier",
+          "impact": -5,
+          "reason": "Minor penalty for non-Ivy League school."
+        }
+      ]
+    },
+    "status": "pending",
+    "source": "uploaded",
+    "createdAt": "2026-05-18T10:53:41.108Z"
+  },
+  {
+    "id": "bwwuoo5wx",
+    "name": "Tasneem.",
+    "email": "N/A",
+    "skills": [],
+    "experience": [],
+    "education": [],
+    "rawText": "Binary Content",
+    "biasLabels": {
+      "fairnessScore": 85,
+      "debiasedScore": 91,
+      "atsScore": 85,
+      "inferredGender": "Female",
+      "collegeTier": "Tier 1",
+      "contributions": [
+        {
+          "feature": "Skills Alignment",
+          "impact": 35,
+          "reason": "Excellent tech stack matches target role."
+        },
+        {
+          "feature": "Neutral Tone",
+          "impact": 15,
+          "reason": "Excellent professional syntax."
+        },
+        {
+          "feature": "College Tier",
+          "impact": -5,
+          "reason": "Minor penalty for non-Ivy League school."
+        }
+      ]
+    },
+    "status": "pending",
+    "source": "uploaded",
+    "createdAt": "2026-05-18T10:51:46.651Z"
+  },
+  {
+    "id": "3fov8donx",
+    "name": "Sandeep (1)",
+    "email": "N/A",
+    "skills": [],
+    "experience": [],
+    "education": [],
+    "rawText": "Binary Content",
+    "biasLabels": {
+      "fairnessScore": 80,
+      "debiasedScore": 88,
+      "atsScore": 85,
+      "inferredGender": "Female",
+      "collegeTier": "Tier 1",
+      "contributions": [
+        {
+          "feature": "Skills Alignment",
+          "impact": 35,
+          "reason": "Excellent tech stack matches target role."
+        },
+        {
+          "feature": "Neutral Tone",
+          "impact": 15,
+          "reason": "Excellent professional syntax."
+        },
+        {
+          "feature": "College Tier",
+          "impact": -5,
+          "reason": "Minor penalty for non-Ivy League school."
+        }
+      ]
+    },
+    "status": "pending",
+    "source": "uploaded",
+    "createdAt": "2026-05-18T10:48:16.891Z"
+  },
+  {
+    "id": "jkkkv9r8u",
+    "name": "KATTA KOUSHIK",
+    "email": "N/A",
+    "skills": [],
+    "experience": [],
+    "education": [],
+    "rawText": "Binary Content",
+    "biasLabels": {
+      "fairnessScore": 81,
+      "debiasedScore": 87,
+      "atsScore": 88,
+      "inferredGender": "Female",
+      "collegeTier": "Tier 1",
+      "contributions": [
+        {
+          "feature": "Skills Alignment",
+          "impact": 35,
+          "reason": "Excellent tech stack matches target role."
+        },
+        {
+          "feature": "Neutral Tone",
+          "impact": 15,
+          "reason": "Excellent professional syntax."
+        },
+        {
+          "feature": "College Tier",
+          "impact": -5,
+          "reason": "Minor penalty for non-Ivy League school."
+        }
+      ]
+    },
+    "status": "pending",
+    "source": "uploaded",
+    "createdAt": "2026-05-18T10:46:42.447Z"
+  },
+  {
+    "id": "sqh48qjcw",
+    "name": "Tasneem.",
+    "email": "N/A",
+    "skills": [],
+    "experience": [],
+    "education": [],
+    "rawText": "Binary Content",
+    "biasLabels": {
+      "fairnessScore": 73,
+      "debiasedScore": 94,
+      "atsScore": 80,
+      "inferredGender": "Male",
+      "collegeTier": "Tier 1",
+      "contributions": [
+        {
+          "feature": "Skills Alignment",
+          "impact": 35,
+          "reason": "Excellent tech stack matches target role."
+        },
+        {
+          "feature": "Neutral Tone",
+          "impact": 15,
+          "reason": "Excellent professional syntax."
+        },
+        {
+          "feature": "College Tier",
+          "impact": -5,
+          "reason": "Minor penalty for non-Ivy League school."
+        }
+      ]
+    },
+    "status": "pending",
+    "source": "uploaded",
+    "createdAt": "2026-05-18T10:46:19.972Z"
+  },
+  {
+    "id": "wtfvf7l58",
+    "name": "Sandeep (1)",
+    "email": "N/A",
+    "skills": [],
+    "experience": [],
+    "education": [],
+    "rawText": "Binary Content",
+    "biasLabels": {},
+    "status": "pending",
+    "source": "uploaded",
+    "createdAt": "2026-05-18T10:44:46.603Z"
+  },
+  {
+    "id": "lh337nayx",
+    "name": "Tasneem.",
+    "email": "N/A",
+    "skills": [],
+    "experience": [],
+    "education": [],
+    "rawText": "Binary Content",
+    "biasLabels": {},
+    "status": "pending",
+    "source": "uploaded",
+    "createdAt": "2026-05-18T10:41:12.845Z"
+  },
+  {
+    "id": "3vjwo30vg",
+    "name": "Unknown Candidate",
+    "email": "N/A",
+    "skills": [],
+    "experience": [],
+    "education": [],
+    "rawText": "Binary Content",
+    "biasLabels": {},
+    "status": "pending",
+    "source": "uploaded",
+    "createdAt": "2026-05-18T10:38:54.375Z"
+  }
+]

@@ -5,7 +5,7 @@ import path from "path";
 import fs from "fs";
 import * as pdf from "pdf-parse";
 import { createObjectCsvWriter } from "csv-writer";
-import { askRecruiter } from "./src/lib/gemini.js";
+import { askRecruiter, analyzeResume, generateExpertATSResume } from "./src/lib/gemini.js";
 
 // Note: In a real app, we'd use a database. For this "dataset pipeline" task, 
 // we'll use a local JSON file to store the "processed dataset".
@@ -136,6 +136,28 @@ async function startServer() {
       res.json({ answer });
     } catch (err) {
       res.status(500).json({ error: "Failed to chat" });
+    }
+  });
+
+  app.post("/api/analyze-resume", async (req, res) => {
+    const { content } = req.body;
+    try {
+      const result = await analyzeResume(content);
+      res.json(result);
+    } catch (err) {
+      console.error("Backend error parsing resume:", err);
+      res.status(500).json({ error: "Failed to analyze resume" });
+    }
+  });
+
+  app.post("/api/generate-ats", async (req, res) => {
+    const { resume, targetRole } = req.body;
+    try {
+      const result = await generateExpertATSResume(resume, targetRole);
+      res.json(result);
+    } catch (err) {
+      console.error("Backend error generating ATS resume:", err);
+      res.status(500).json({ error: "Failed to generate ATS resume" });
     }
   });
 

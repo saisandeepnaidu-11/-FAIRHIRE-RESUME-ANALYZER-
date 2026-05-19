@@ -1,3 +1,12 @@
+---
+title: FairHire Resume Analyzer
+emoji: 💼
+colorFrom: indigo
+colorTo: blue
+sdk: docker
+app_port: 3000
+---
+
 # FairHire AI 🚀
 
 **Empowering Fair and Efficient Talent Acquisition with AI.**
